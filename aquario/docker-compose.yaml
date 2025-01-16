@@ -1,0 +1,33 @@
+services:
+  aquario_db:
+    container_name: aquario-db
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: aquario_db
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    ports:
+      - 5432:5433
+    networks:
+      - aquario_net
+  aquario_app:
+    container_name: aquario-app
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      spring.datasource.driver-class-name: org.postgresql.Driver
+      spring.datasource.username: postgres
+      spring.datasource.password: postgres
+      spring.datasource.url: jdbc:postgresql://aquario_db:5432/aquario_db
+
+      server.port: 8080
+    restart: unless-stopped
+    depends_on:
+      - aquario_db
+    networks:
+      - aquario_net
+
+networks:
+  aquario_network:
+    name: aquario_net
