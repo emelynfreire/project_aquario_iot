@@ -22,7 +22,6 @@ public class EventController {
     // Endpoint para receber eventos
     @PostMapping("eventos")
     public ResponseEntity<String> creat(@RequestBody EventModel evento) {
-        evento.setData(LocalDateTime.now()); // Adicionar data/hora atual
         eventRepository.save(evento); // Salvar no banco
         return ResponseEntity.ok("Evento registrado com sucesso!");
     }
@@ -36,7 +35,6 @@ public class EventController {
     // Endpoint para receber metricas
     @PostMapping("metricas")
     public ResponseEntity<String> creat(@RequestBody MetricasModel metricas) {
-        metricas.setData(LocalDateTime.now()); // Adicionar data/hora atual
         metricasRepository.save(metricas); // Salvar no banco
         return ResponseEntity.ok("Métricas registradas com sucesso!");
     }

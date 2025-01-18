@@ -13,7 +13,7 @@ import java.util.UUID;
 public class MetricasModel
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private LocalDateTime data;
     private float valuePH;
@@ -21,4 +21,8 @@ public class MetricasModel
     private float temperature;
     private int luminosity;
     private boolean outRange;
+
+    public MetricasModel(){
+        this.data = LocalDateTime.now();
+    }
 }

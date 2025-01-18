@@ -7,9 +7,10 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
     ports:
-      - 5432:5433
+      - 5432:5432
     networks:
-      - aquario_net
+      - aquario_network
+
   aquario_app:
     container_name: aquario-app
     build: .
@@ -26,7 +27,7 @@ services:
     depends_on:
       - aquario_db
     networks:
-      - aquario_net
+      - aquario_network
 
 networks:
   aquario_network:
