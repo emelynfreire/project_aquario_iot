@@ -16,6 +16,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Start Database
+      working-directory: ./aquario
+      run: docker-compose up -d aquario_db
+
     - name: Build Docker image
       working-directory: ./aquario
       run: docker build . --file Dockerfile --tag aquario-api:latest
