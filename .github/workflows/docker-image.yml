@@ -18,7 +18,7 @@ jobs:
 
     - name: Start Database
       working-directory: ./aquario
-      run: docker-compose up -d aquario_db
+      run: docker-compose up aquario_db
 
     - name: Build Docker image
       working-directory: ./aquario
