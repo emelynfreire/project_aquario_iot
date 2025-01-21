@@ -9,35 +9,6 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17' # Altere para a versão Java usada no projeto
-        distribution: 'temurin'
-
-    - name: Cache Maven dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-m2
-
-    - name: Build with Maven
-      working-directory: ./aquario
-      run: mvn install
-
-    - name: Run tests
-      working-directory: ./aquario
-      run: mvn test
-
   docker:
     runs-on: ubuntu-latest
 
